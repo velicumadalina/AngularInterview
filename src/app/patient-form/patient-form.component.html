@@ -1,0 +1,89 @@
+<div class="container mt-5" style="margin-top:10px">
+    <div class="row" id="post-review-box">
+        <div class="col-md-5 offset-3">
+            <h5 style="text-align:center">Add a new patient:</h5>
+            <br>
+            <br>
+            <div [formGroup]="patientForm" class="form-group">
+                <br>
+                <label>Nume:</label>
+                <input class="form-control" id="firstName" type="text" placeholder="Nume" formControlName="lastName"
+                    style="width: 445px;" required>
+                <div class="text-danger"
+                    *ngIf="(patientFormControls.lastName.touched && patientFormControls.lastName.invalid) || (submitAttemptFailed && patientFormControls.lastName.invalid)">
+                    *Acest camp nu poate fi gol!
+                </div>
+                <br>
+                <label>Prenume:</label>
+                <input class="form-control " type="text" placeholder="Prenume" formControlName="firstName"
+                    style="width: 445px;" required>
+                <div class="text-danger"
+                    *ngIf="(patientFormControls.firstName.touched && patientFormControls.firstName.invalid) || (submitAttemptFailed && patientFormControls.firstName.invalid)">
+                    *Acest camp nu poate fi gol!
+                </div>
+                <br>
+                <label>CNP:</label>
+                <input class="form-control " type="number" placeholder="CNP" formControlName="cnp" style="width: 445px;"
+                    required maxlength="13" minlength="13">
+                <div class="text-danger" *ngIf="(patientFormControls.cnp.touched && patientFormControls.cnp.invalid)">
+                    *CNP trebuie sa contina 13 caractere numerice!
+                </div>
+                <div class="text-danger" *ngIf="(submitAttemptFailed && patientFormControls.cnp.pristine)">
+                    *Acest camp nu poate fi gol!
+                </div>
+                <br>
+                <label>Data Nasterii:</label>
+                <input class="form-control" type="date" placeholder="Data Nasterii" formControlName="birthDate"
+                    style="width: 445px;" required>
+                <div class="text-danger"
+                    *ngIf="(patientFormControls.birthDate.touched && patientFormControls.birthDate.invalid)">
+                    *Data Nasterii trebuie sa fie mai mica decat data curenta!
+                </div>
+                <div class="text-danger"
+                    *ngIf="(submitAttemptFailed && patientFormControls.birthDate.pristine)">
+                    *Acest camp nu poate fi gol!
+                </div>
+                <br>
+                <label>Sex(M/F):</label>
+                <div>
+                    <input id="male" type="radio" value="M" name="gender" formControlName="gender">
+                    <label for="male">M</label>
+                </div>
+                <div>
+                    <input id="female" type="radio" value="F" name="gender" formControlName="gender">
+                    <label for="female">F</label>
+                </div>
+                <div class="text-danger"
+                    *ngIf="patientFormControls.gender.pristine && submitAttemptFailed">
+                    *Va rugam selectati o optiune!
+                </div>
+                <br>
+                <label>Numar de telefon:</label>
+
+                <input class="form-control " type="number" placeholder="Numar de telefon" formControlName="phoneNumber"
+                    style="width: 445px;" required>
+                <br>
+
+                <label>Numar de ordine:</label>
+
+                <input class="form-control " type="text" placeholder="Order Number" formControlName="orderNumber"
+                    style="width: 445px;" readonly="true">
+                <br>
+
+                <div class="btn-group">
+                        <button type="button" 
+                            class="btn btn-success btn-lg mr-2 rounded-lg" *ngIf="!editMode"
+                            (click)="createNewPatient()">Salveaza</button>
+                        
+                    
+                        <button type="button" 
+                            class="btn btn-success btn-lg mr-2 rounded-lg" *ngIf="editMode"
+                            (click)="editPatient()">Salveaza</button>
+                    <button type="button" class="btn btn-secondary btn-lg mr-2 rounded-lg"
+                        (click)="onCancel()">Anuleaza</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

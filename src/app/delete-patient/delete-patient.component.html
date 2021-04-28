@@ -1,0 +1,16 @@
+<div class="modal-content">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+    </div>
+
+    <div class="modal-body text-center mb-5">
+        <h1>Confirmare stergere pacient</h1>
+        <p>Sunteti sigur ca vreti sa stergeti pacientul #{{patient.orderNumber}}, {{patient.lastName}} {{patient.firstName}}? Aceasta actiune este ireversibila.</p>
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary btn-lg mr-2 rounded-lg" (click)="onCancel()" >Anulare</button>
+            <button type="button" class="btn btn-danger btn-lg rounded-lg" (click)="onDeletePatient()">Stergere</button>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div class="d-flex">
+    <h2>Lista de asteptare</h2>
+    <br>
+    <button class="btn btn-success ml-auto"><a class="text-light" href="/add-patient">Add a new patient</a></button>
+    <br>
+</div>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover" style="cursor: pointer;">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Nume</th>
+                        <th>Prenume</th>
+                        <th>Data Nasterii</th>
+                        <th>Sex(M/F)</th>
+                        <th>Actiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let patient of patients">
+                        <td>{{patient.lastName}}</td>
+                        <td>{{patient.firstName}}</td>
+                        <td>{{patient.birthDate}}</td>
+                        <td>{{patient.gender}}</td>
+                        <td>
+                            <a class="text-danger" href="/delete-patient/{{patient.orderNumber}}"><i class="fa fa-trash" style="font-size: 1.25em; cursor: pointer;margin-right:15px; "></i></a>
+                            <a class="text-primary" href="/patient/{{patient.orderNumber}}"><i class="fa fa-pencil" style="font-size: 1.25em; cursor: pointer; "></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 
